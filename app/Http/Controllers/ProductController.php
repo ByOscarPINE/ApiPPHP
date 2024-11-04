@@ -16,4 +16,30 @@ class ProductController extends Controller
         $product = product::create($request->all());
         return response()->json($product);
     }
+
+    public function getProduct($id){
+        $product = Product::find($id);
+        if(!$product){
+            return response()->json(['msn'=>'Product not found', 404]);
+        }
+        return response()->json($product);
+    }
+
+    public function destroyProduct($id){
+        $product = Product::find($id);
+        if(!$product){
+            return response()->json(['msn'=>'Product not found', 404]);
+        }
+        $product -> delete();
+        return response()->json(['msn'=>'Producto elimindao']);
+    }
+
+    public function updateProduct($id, Request $request){
+        $product = Product::find($id);
+        if(!$product){
+            return response()->json(['msn'=>'Product not found', 404]);
+        }
+        $product->update($request->all());
+        return response()->json($product);
+    }
 }

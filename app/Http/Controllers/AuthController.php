@@ -23,6 +23,11 @@ class AuthController extends Controller
         return response()->json([
             'token' => $token,
             'user' => $user
+        ])->withHeaders([
+            'Access-Control-Allow-Origin' => '*',
+            'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
+            'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
+            'Set-Cookie' => "token=$token; HttpOnly; Secure; SameSite=Strict"
         ]);
     }
 }

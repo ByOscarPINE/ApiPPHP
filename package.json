@@ -4,7 +4,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "start": "php artisan migrate:status && php artisan serve"
+        "start": "php artisan migrate:status && php artisan serve --port=8080"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
